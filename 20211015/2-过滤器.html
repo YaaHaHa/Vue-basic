@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>过滤器</title>
+        <script type="text/javascript" src="../js/vue.js"></script>
+        <script type="text/javascript" src="../js/dayjs.min.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            用computed实现
+            <h2>{{fmtTime}}</h2>
+            <br /><br />
+            用metho实现
+            <h2>{{fmtTimeFn()}}</h2>
+            <br /><br />
+            用过滤属性实现
+            <h2>{{time | timeFormater}}</h2>
+            给过滤器传参数
+            <h2>{{time | timeFormater('YYYY')}}</h2>
+            过滤器嵌套
+            <h2>{{time | timeFormater | mySlice(3)}}</h2>
+            过滤器实现传参
+            <!-- <h2 :x='msg | mySlice(2)'>{{msg}}</h2> -->
+        </div>
+        <script type="text/javascript" >
+        Vue.config.productionTip = false
+            Vue.filter('mySlice',function(value,n){
+                return value.slice(0,n)
+            })
+            new Vue({
+                el:"#root",
+                data:{
+                    time:Date.now(),
+                    msh:'hello'
+                },
+                computed:{
+                    fmtTime(){
+                        return dayjs(Date.now()).format('YYYY-MM-DD HH:mm:ss');
+                    }
+                },
+                methods:{
+                    fmtTimeFn(){
+                        return dayjs(Date.now()).format('YYYY-MM-DD HH:mm:ss');
+                    }
+                },
+                // 局部过滤
+                filters:{
+                    timeFormater(value,str='YYYY-MM-DD HH:mm:ss'){
+                        return dayjs(this.time).format(str);
+                    },
+                    
+                }
+            })
+        </script>
+    </body>
+</html>

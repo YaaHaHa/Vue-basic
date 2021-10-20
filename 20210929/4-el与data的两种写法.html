@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>el与data的两种写法</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <h2>{{Hello}},{{time}}</h2>
+        </div>
+        <hr>
+        <hr>
+        <div id="root2">
+            <h2>{{zuo}}{{myself}}</h2>
+        </div>
+        <script type="text/javascript" >
+        Vue.config.productionTip=false
+            const vm =new Vue({
+                data:{
+                    Hello:'你好',
+                    time:'今天'
+                }
+            })
+            // el的第二种写法
+            vm.$mount('#root')
+            // 只能使用普通函数，不能使用箭头函数，因为this的指向问题，
+            // 新建的Vue的实例调用的函数，this指向Vue的实例对象。箭头对象指向Window
+            new Vue({
+                el:'#root2',
+                data(){
+                    console.log(this)
+                    return{
+                        zuo:'做',
+                        myself:'自己'
+                    }
+                }
+            })
+
+        </script>
+    </body>
+</html>

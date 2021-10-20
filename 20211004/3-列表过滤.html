@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>列表过滤</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <ul>
+                <input type="text" v-model='keyWord'>
+                <li v-for="p,index of filper" :key='index'>
+                    {{p.name}}-{{p.age}}-{{p.sex}}
+                </li>
+            </ul>
+        </div>
+        <script type="text/javascript" >
+            Vue.config.productionTip = false;
+            // watch实现
+            /* new Vue({
+                el:'#root',
+                data:{
+                    keyWord:'',
+                    persons:[
+                        {id:'001',name:'马冬梅',age:18,sex:"女"},
+                        {id:'002',name:'周冬雨',age:19,sex:"女"},
+                        {id:'003',name:'周杰伦',age:20,sex:"男"},
+                        {id:'004',name:'温兆伦',age:21,sex:"男"}
+                    ],
+                    filper:[]        
+                },
+                watch:{
+                    // 接收新的值，过滤persons中符合的赋给filper，展示filper，要开启立刻监视，不然一开始就啥也不显示
+                    keyWord:{
+                        immeditate:true,
+                        handler(val){
+							this.filper = this.persons.filter((p)=>{
+								return p.name.indexOf(val) !== -1
+							})
+						}
+                        
+                    }
+                }
+            }) */
+            new Vue({
+                el:'#root',
+                data:{
+                    keyWord:'',
+                    persons:[
+                        {id:'001',name:'马冬梅',age:18,sex:"女"},
+                        {id:'002',name:'周冬雨',age:19,sex:"女"},
+                        {id:'003',name:'周杰伦',age:20,sex:"男"},
+                        {id:'004',name:'温兆伦',age:21,sex:"男"}
+                    ],
+                },
+                computed:{
+                    // 当keyWord为空串时indexOf为0，刚开始就全过滤出来了。
+                    //      随后依赖的keyWord每次改变，都会重新计算filper
+                    filper(){
+                        return this.persons.filter((p)=>{
+								return p.name.indexOf(this.keyWord) !== -1
+							})
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

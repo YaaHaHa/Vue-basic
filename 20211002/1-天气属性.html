@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Document</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <h2>今天很{{info}}</h2>
+            <!-- 进行简单的操作时可以这样写 -->
+            <button @click='this.isHot = !this.isHot'>点我</button>
+            <!-- <button @click='change'>点我</button> -->
+        </div>
+        <script type="text/javascript" >
+        Vue.config.productionTip = false
+            const vm =new Vue({
+                el:'#root',
+                data:{
+                    isHot:true
+                },
+                computed:{
+                    info(){
+                        return this.isHot? '炎热':'凉爽'
+                    }
+                },
+                methods: {
+                    /* change(){
+                        console.log(this.isHot)
+                        this.isHot = !this.isHot;
+                    } */
+                },
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>非单元文件组件</title>
+        <script type="text/javascript" src="../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <!-- 第三步：使用组件 局部-->
+            <school></school>
+            <!-- 第三步：使用组件 全局-->
+            <quanju></quanju>
+        </div>
+        <div id="root2">
+            <!-- <school></school>这是局部组件，超出使用范围会报错 -->
+            <quanju></quanju>
+        </div>
+    </body>
+    <script type="text/javascript" >
+        Vue.config.productionTip = false;
+        // 创建组件
+        // el:'#root', 组件定义时，一定不要写el配置项，因为最终所有的组件都要被一个vm管理，由vm决定服务于哪个容器。每次调用data()都会返回独一的对象，如果data写成对象，那么所有用data的都联系在同一个对象
+		// 所以组件可以复用，并且互相独立
+        const school = Vue.extend({
+            template:`
+                <div>
+                    <h2>{{name}}</h2>
+                </div>
+            `,
+            data() {
+                return {
+                   name:'家里蹲'            
+                }
+            },
+        });
+        // 创建全局组件
+        const quanju = Vue.extend({
+            template:`
+                <div>
+                    <h2>{{about}}</h2>
+                </div>
+            `,
+            data() {
+                return {
+                    about:'我是全局的'
+                }
+            },
+        })
+        // 注册全局组件
+        Vue.component('quanju',quanju);
+        // 注册局部组件
+        new Vue({
+            el:'#root',
+            // 注册组件
+            components:{
+                school
+            }
+
+        })
+        new Vue({
+            el:'#root2'
+        })
+    </script>
+</html>

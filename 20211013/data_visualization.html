@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>数据可视化</title>
+        <style>
+            #chart{
+                width: 600px;
+                height: 300px;
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="chart"></div>
+        <script src="./js/flotr2.min.js"></script>
+        <script type="text/javascript" >
+            var wins =[[[0,13],[1,11],[2,15],[3,15],[4,18],[5,21],[6,28]]];
+            var years=[
+                [0,"2006"],
+                [1,"2007"],
+                [2,"2008"],
+                [3,"2009"],
+                [4,"2010"],
+                [5,"2011"],
+                [6,"2012"]
+            ]
+            window.onload=function(){
+                Flotr.draw(
+                    document.getElementById('chart'),
+                    wins,
+                    {   
+                        // 每一柱
+                        bars:{
+                            show:true,
+                            barWidth:0.5    //每一柱宽度为标准的一般
+                        },
+                        // 纵轴配置项
+                        yaxis:{
+                            min:0,  //纵轴最小值
+                            tickDecimals:0  //精确范围到0，不设置这个就默认精确到小数点后一位
+                        },
+                        // 横轴配置项
+                        xaxis:{
+                            ticks:years     //用years数组作为横坐标
+                        }
+                    }
+                );
+            };
+        </script>
+    </body>
+</html>

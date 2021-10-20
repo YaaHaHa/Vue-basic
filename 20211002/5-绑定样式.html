@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>绑定样式</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <style>
+			.basic{
+				width: 400px;
+				height: 100px;
+				border: 1px solid black;
+			}
+			
+			.happy{
+				border: 4px solid red;;
+				background-color: rgba(255, 255, 0, 0.644);
+				background: linear-gradient(30deg,yellow,pink,orange,yellow);
+			}
+			.sad{
+				border: 4px dashed rgb(2, 197, 2);
+				background-color: gray;
+			}
+			.normal{
+				background-color: skyblue;
+			}
+
+			.atguigu1{
+				background-color: yellowgreen;
+			}
+			.atguigu2{
+				font-size: 30px;
+				text-shadow:2px 2px 10px red;
+			}
+			.atguigu3{
+				border-radius: 20px;
+			}
+		</style>
+    </head>
+    <body>
+        <div id="root">
+            <!-- 绑定class样式--字符串写法，适用于：样式的类名不确定，需要动态指定 -->
+            <div class="basic" :class="mood" @click="changeMood">字符串写法</div>
+            <!-- 绑定class样式--数组写法，适用于：要绑定的样式个数不确定、名字也不确定 -->
+            <div class="basic" :class="classArr">数组写法</div>
+            <div class="basic" :class="['atguigu1','atguigu2','atguigu3'] ">数组写法2</div>
+            <!-- 绑定class样式--对象写法，适用于：要绑定的样式个数确定、名字也确定，但要动态决定用不用 -->
+            <div class="basic" :class="classObj">对象写法2</div>
+            <div class="basic" :class="{
+                atguigu1:true,
+                atguigu2:false,
+                atguigu3:true
+
+            }">对象写法</div>
+
+
+            <!-- 绑定style样式--对象写法 -->
+            <div class="basic" :style="{fontSize:'40px'}">嵌入样式</div>
+            <div class="basic" :style="styleObj">嵌入样式</div>
+            <!-- 绑定style样式--数组写法 -->
+            <div class="basic" :style="styleArr">嵌入样式</div>
+        </div>
+        <script type="text/javascript" >
+            Vue.config.productionTip =false;
+            new Vue({
+                el:'#root',
+                data:{
+                    name:'张三',
+                    mood:'normal',
+                    classArr:['atguigu1','atguigu2','atguigu3'],
+                    classObj:{
+                        atguigu1:false,
+                        atguigu2:true,
+                        atguigu3:true
+
+                    },
+                    styleObj:{
+                        fontSize:'40px',
+                        color:'yellow'
+                    },
+                    styleObj2:{
+                        backgroundColor:'gray'
+                    },
+                    styleArr:[
+                        {
+                            fontSize:'40px',
+                            color:'yellow'
+                        },
+                        {
+                            backgroundColor:'yellowgreen'
+                        }
+                    ]
+                },
+                methods: {
+                    changeMood(){
+                        const arr =['happy','sad','normal'];
+                                            // 0-3，包括0不包括3
+                        const index = Math.floor(Math.random()*3);
+                        console.log(index)
+                        this.mood=arr[index];
+                        
+                    }
+                },
+            })
+        </script>
+    </body>
+</html>

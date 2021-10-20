@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Document</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    </head>
+    <body>
+        <!-- 
+            事件的基本使用：
+							1.使用v-on:xxx 或 @xxx 绑定事件，其中xxx是事件名；
+							2.事件的回调需要配置在methods对象中，最终会在vm上；
+							3.methods中配置的函数，不要用箭头函数！否则this就不是vm了；
+							4.methods中配置的函数，都是被Vue所管理的函数，this的指向是vm 或 组件实例对象；
+							5.@click="demo" 和 @click="demo($event)" 效果一致，但后者可以传参；
+         -->
+        <div id="root">
+            <h2>{{Hello}}{{Time}}</h2>
+            <button v-on:click='showinfo1'>点我1</button>
+            <button @click='showinfo1'>点我1</button>
+            <button v-on:click='showinfo2(19,$event)'>点我2</button>
+        </div>
+        <script type="text/javascript" >
+        Vue.config.productionTip=false
+            const vm = new Vue({
+                el:'#root',
+                data:{
+                    Hello:'你好',
+                    Time:'今天'
+                },
+                // methods没有数据代理，他是直接挂载vm上的，因为他只需要被调用，不需要修改。所以如果写在data里会拖累Vue
+                methods:{
+                    showinfo1(event){
+                        alert('你好1');
+                    },
+                    showinfo2(num,event){
+                        console.log(num,event)
+                        alert('你好!!!');
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

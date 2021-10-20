@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>自定义指令</title>
+        <script type="text/javascript" src="../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            初始值: <span v-once>{{n}}</span> <hr />
+            当前的值是：<span v-text="n">{{n}}</span> <hr />
+            十倍：<span v-big="n"></span>   <hr />
+            一百倍：<span v-bigg="n"></span>   <hr />
+            <button @click="n++">点我n+1</button>   <hr />
+            <input type="text" v-big-number:value="n">
+            <input type="text" v-bigg:value="n">
+        </div>
+    </body>
+    <script type="text/javascript" >
+        Vue.config.productionTip = false;
+        /* Vue.directive("bigg",function(el,bg){
+            el.innerText = bg.value*100;
+        }) */
+        Vue.directive("bigg",{
+            // 指令与元素完成绑定的时候
+                    bind(element,binding){
+                        element.value = binding.value*1000;
+                    },
+                    // 指令所在元素被插入界面时
+                    inserted(element,binding){
+                        element.focus()
+                    },
+                    // 指令所在的模板被重新渲染的时候
+                    update(element,binding){
+                        element.value = binding.value*10000;
+                    }
+        }
+        )
+        new Vue({
+            el:'#root',
+            data:{
+                n:1
+            },
+            directives:{
+                // 这是简写模式
+                // 第一个参数时被绑定的节点，第二个参数是包含所有指令相关的对象
+                big(element,binding){
+                                        // value是赋的值
+                    element.innerText = binding.value*10;
+                },
+                // 完整模式
+                'big-number':{
+                    // 指令与元素完成绑定的时候
+                    bind(element,binding){
+                        element.value = binding.value;
+                    },
+                    // 指令所在元素被插入界面时
+                    inserted(element,binding){
+                        element.focus()
+                    },
+                    // 指令所在的模板被重新渲染的时候
+                    update(element,binding){
+                        element.value = binding.value;
+                    }
+                }
+
+            }
+        })
+    </script>
+</html>

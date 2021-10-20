@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>条件渲染</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <!-- v-show -->
+            <h2 v-show="false">{{hi}}</h2>
+            <h2 v-show="true">{{hi}}</h2>
+
+            <!-- v-if -->
+            <h2 v-if="true">{{hi}}</h2>
+
+            <button @click="add">n+1</button>
+
+            <!-- v-else和v-else-if -->
+            <!-- <h2 v-if="n === 1">Angular</h2>
+            <h2 v-else-if="n === 2">React</h2>
+            <h2 v-else-if="n === 3">Vue</h2>
+            <h2 v-else>Happy</h2> -->
+
+            <!-- v-if与template的配合使用 -->
+            <template v-if="n === 1">
+                <h2>你好</h2>
+                <h2>今天</h2>
+            </template>
+        </div>
+        <script type="text/javascript" >
+        Vue.config.productionTip = false
+            new Vue({
+                el:'#root',
+                data:{
+                    hi:'你好',
+                    n:0,
+                },
+                methods:{
+                    add(){
+                        this.n=this.n+1;
+                        console.log(this.n)
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

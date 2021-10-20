@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>模拟Vue的数据检测</title>
+    </head>
+    <body>
+        <script type="text/javascript" >
+            // 数据
+            let data={
+                name:'张三',
+                address:'火星'
+            }
+
+            /*
+            Object.defineProperty(data,'name',{
+                get(){
+                    return data.name;
+                },
+                set(val){
+                    data.name = val;
+                }
+            })
+            这种方法会使内存溢出，因为读取name时，调用get，get里面还要读取name，一直循环嵌套了，走不出去了。set也是
+            */
+
+            // 创建一个监视的实例对象
+            const obs = new Observer(data);
+            console.log(obs)
+            
+            // 创建一个vm实例对象
+            let vm ={}
+            vm._data = data = obs;
+            
+
+            function Observer(obj){
+                // 汇总对象中所有的属性到一个数组
+                const keys = Object.keys(obj);
+
+                // 遍历
+                keys.forEach((k)=>{
+                  //this是指实例对象
+                  Object.defineProperty(this,k,{
+                    //函数体
+                    get(){
+                        return obj[k];
+                    },
+                    set(val){
+                        console.log(`${k}被改了，我要去解析模板，生成虚拟DOM.....我要开始忙了`);
+                        obj[k] =val;
+                    }
+                  })
+                })
+
+            }
+        </script>
+    </body>
+</html>

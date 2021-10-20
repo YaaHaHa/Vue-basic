@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Document</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    </head>
+    <body>
+        <!-- 
+
+            person对象中的age属性值要和外部变量number一样，而且在person.age改变age值的时候，number值也要改，因为
+            age的值取决于number值
+         -->
+
+        <script type="text/javascript" >
+            let number =20;
+            let person={
+                name:'Tom',
+                sex:'man',
+            }
+            Object.defineProperty(person,'age',{
+                /* value:18,
+                enumerable:true,    //是否被枚举，默认false
+                writable:true,       //是否可写，默认false
+                configurable:true,      //是否可被删除，默认false */
+
+                //当有人读取person的age属性时，get函数(getter)就会被调用，且返回值就是age的值
+                get(){
+                    console.log("有人调用get!");
+                    return number;
+                },
+                //当有人修改person的age属性时，set函数(setter)就会被调用，且会收到修改的具体值
+                set(value){
+                    console.log("有人修改了age");
+                    number = value;
+                }
+            })
+            console.log(person);
+        </script>
+    </body>
+</html>
