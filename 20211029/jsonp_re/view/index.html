@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>jsonp原理实现</title>
+    </head>
+    <body>
+        <!-- <script type="text/javascript" >
+            window.jsonpCallback =function (res){
+                console.log(res);
+            }
+            </script> -->
+            <script type="text/javascript" src="./jsonpCustom.js"></script>
+        <script src='http://localhost:8080/api/jsonp?id=1&cb=jsonpCallback' type="text/javascript" ></script>
+    </body>
+</html>

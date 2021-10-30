@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>localStorage</title>
+    </head>
+    <body>
+        <script type="text/javascript" >
+        // 添加本地存储，key和value都是字符串，就算是数字也会被改成字符串
+            localStorage.setItem('name','hello');
+            let name = '你好'
+            localStorage.setItem(name,'hello');
+            localStorage.setItem(1,1);
+        // 如果是引用类型的数据，会被调用他的toString方法
+            const obj = {how:'How',what:'What'}
+            localStorage.setItem('obj1',obj)     //[object Object]
+            localStorage.setItem('obj2',JSON.stringify(obj))     //[object Object]
+            
+            // console.log(obj.toString());
+        // 读取本地存储
+            console.log(localStorage.getItem('name'));
+            console.log(localStorage.getItem('bbb'));   //如果找不到就是null
+            // console.log(localStorage.getItem(bbb));   //如果变量找不到就报错
+            console.log(JSON.parse(localStorage.getItem('obj3')));
+
+            console.log(localStorage.getItem('obj3'));
+            // 移除一条
+            localStorage.removeItem('1');
+            // 移除全部
+            localStorage.clear()
+
+        </script>
+    </body>
+</html>
