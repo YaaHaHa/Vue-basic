@@ -1,0 +1,149 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "8860553",
+      "name": "消毒柜",
+      "font_class": "xiaodugui",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "8860557",
+      "name": "洗衣机",
+      "font_class": "xiyiji",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "8860576",
+      "name": "电池炉",
+      "font_class": "dianchilu",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "8860577",
+      "name": "烤箱",
+      "font_class": "kaoxiang",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "8860604",
+      "name": "洗碗机",
+      "font_class": "xiwanji",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "8861254",
+      "name": "冰箱",
+      "font_class": "bingxiang",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "8861974",
+      "name": "热水壶",
+      "font_class": "tubiaozhizuomoban",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "8972415",
+      "name": "电饭煲",
+      "font_class": "dianfanbao",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "8973304",
+      "name": "咖啡机",
+      "font_class": "kafeiji",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "8974240",
+      "name": "热水器",
+      "font_class": "reshuiqi",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "8974305",
+      "name": "空调",
+      "font_class": "kongtiao",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "8977261",
+      "name": "厨师机",
+      "font_class": "chushiji",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "8977442",
+      "name": "落地扇",
+      "font_class": "ladishan",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "8977443",
+      "name": "坐地扇",
+      "font_class": "zuodishan",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "8977450",
+      "name": "璧扇",
+      "font_class": "bishan",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "8977459",
+      "name": "油烟机",
+      "font_class": "youyanji",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "8993956",
+      "name": "破壁机",
+      "font_class": "pobiji",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "8994007",
+      "name": "燃气炉",
+      "font_class": "ranqilu",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "8994730",
+      "name": "电热锅",
+      "font_class": "dianreguo",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "8998185",
+      "name": "面包机",
+      "font_class": "mianbaoji",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    }
+  ]
+}

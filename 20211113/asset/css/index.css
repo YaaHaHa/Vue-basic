@@ -1,0 +1,12 @@
+.clearFix:aftetr{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+body .navbar,.navbar-default{
+    background-color: #fff;
+}
+body{
+    height: 100000px;
+}
