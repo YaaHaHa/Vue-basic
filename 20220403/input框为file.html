@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="baidu.com" method="post">
+        <input type="file" name="image" id="adad">
+        <input type="text" name="dad" id="aaa">
+        <input type="text" name="ccc" id="ccc" onclick="bbb()">
+        <button>提交</button>
+    </form>
+    <script type="text/javascript">
+            // var dad = document.querySelector('.dad');
+            var aaa = document.getElementById('aaa');
+            var ccc = document.getElementById('ccc');
+            /* aaa.onchange = function () {
+                // console.log(e.target.value);
+                console.log(1);
+                aaa.value = '123';
+            } */
+            function bbb(e) {
+                console.log(e);
+                e.target.value = '123';
+            }
+            aaa.onchange = bbb;
+
+    </script>
+</body>
+
+</html>

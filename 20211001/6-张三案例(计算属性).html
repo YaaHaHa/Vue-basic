@@ -27,7 +27,7 @@
             <h2>{{fullName}}</h2>
             <h2>{{fullName}}</h2>
             <h2>{{fullName}}</h2>
-
+            <button @click="changeName">把名字改成哈哈</button>
         </div>
         <script type="text/javascript" >
             Vue.config.productionTip =false;
@@ -50,7 +50,15 @@
                             this.lastName=arr[1]
                         }
                     }
-                }
+                },
+                methods: {
+                    changeName(){
+                        this.fullName = '哈哈！';
+                    }
+                },
+                mounted() {
+                    console.log(this);
+                },
             })
         </script>
     </body>

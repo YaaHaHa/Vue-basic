@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>6-声明周期函数之mounted</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+            生命周期：
+                    1.又名：生命周期回调函数、生命周期函数、生命周期钩子。
+                    2.是什么：Vue在关键时刻帮我们调用的一些特殊名称的函数。
+                    3.生命周期函数的名字不可更改，但函数的具体内容是程序员根据需求编写的。
+                    4.生命周期函数中的this指向是vm 或 组件实例对象。
+
+         -->
+    <div id="root">
+        <h2 :style="{opacity}">你好</h2>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false;
+        new Vue({
+            el: '#root',
+            data: {
+                opacity: 1
+            },
+            methods: {
+                fn() {
+                    console.log(1);
+                }
+            },
+            beforeCreate() {
+                console.log('--------------beforeCreate------------------');
+                console.log('beforeCreate的data', this.opacity);    // undefined
+                console.log('beforeCreate的computed', this.o2);       // undefined
+                console.log('beforeCreate的method', this.fn);       // undefined
+                console.log('beforeCreate的$el', this.$el);         //  undefined
+            },
+            created() {
+                console.log('----------------created-----------------------')
+                console.log('created的data', this.opacity);     //  可以访问data、computed、watch
+                console.log('created的computed',this.o2);
+                console.log('created的method', this.fn);
+                console.log('created的$el', this.$el);      // undefined
+            },
+
+            beforeMount() {
+                console.log('----------------beforeMount-------------------');
+                console.log('created的$el', this.$el);  // 调用render生成有虚拟dom了，比如h2的样式是:style='{opacity}'
+                
+            },
+            //Vue完成模板的解析并把初始的真实DOM元素放入页面后（挂载完毕）调用mounted
+            mounted() {
+                /* setInterval(()=>{
+                    this.opacity -= 0.1;
+                    if (this.opacity <= 0) this.opacity=1;
+                },120) */
+                console.log('mounted中的$el',this.$el);     // 有真实dom了
+            },
+            computed:{
+                o2(){
+                    return this.opacity+1;
+                }
+            },
+            watch:{
+                o3(newV,oldV){
+                    console.log(newV,oldV);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
